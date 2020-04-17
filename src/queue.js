@@ -92,6 +92,10 @@ function createQueue(intialCapacity) {
 		return length === 0;
 	};
 
+	that.indexOf = function(element) {
+		return container.indexOf(element)
+	};
+
 	return that;
 }
 
