@@ -17,11 +17,15 @@ Before using it, require the module
 ```js
 const RapidQueue = require('rapid-queue-2')
 ```
+or
+```js
+import RapidQueue from 'rapid-queueu-2'
+```
 
 ### Creating queue
 
 ```js
-const queue = RapidQueue.createQueue()
+const queue = RapidQueue.createQueue(200)
 ```
 
 ## Queue operation
