@@ -6,8 +6,8 @@ This implementation of shift is up to 10,000 times faster than JavaScript's arra
 
 ## Installation
 
-```shell
-	npm install rapid-queue-2
+```
+npm install rapid-queue-2
 ```
 
 ## Usage
@@ -15,13 +15,13 @@ This implementation of shift is up to 10,000 times faster than JavaScript's arra
 Before using it, require the module
 
 ```js
-	const RapidQueue = require('rapid-queue-2')
+const RapidQueue = require('rapid-queue-2')
 ```
 
 ### Creating queue
 
 ```js
-  const queue = RapidQueue.createQueue()
+const queue = RapidQueue.createQueue()
 ```
 
 ## Queue operation
@@ -30,7 +30,7 @@ Before using it, require the module
 ### Inserting element to the end of queue
 
 ```js
-  queue.push(5)`
+queue.push(5)`
 ```
 
 Push will insert 5 to the back of the queue, it will automatically grow the array if the capacity is not enough.
@@ -38,7 +38,7 @@ Push will insert 5 to the back of the queue, it will automatically grow the arra
 ### Get front element
 
 ```js
-  const front = queue.front()
+const front = queue.front()
 ```
 
 It will return the front element without removing it from the queue. It will return null if queue is empty.
@@ -46,7 +46,7 @@ It will return the front element without removing it from the queue. It will ret
 ### Remove front element
 
 ```js
-  const front = queue.shift()
+const front = queue.shift()
 ```
 
 It will return and remove front element from the queue. It will return null if queue is empty.
@@ -54,7 +54,7 @@ It will return and remove front element from the queue. It will return null if q
 ### Get queue length
 
 ```js
-  const length = queue.length()
+const length = queue.length()
 ```
 
 It will return the number of element inside queue;
@@ -62,7 +62,7 @@ It will return the number of element inside queue;
 ### Check if queue is empty
 
 ```js
-  const isEmpty = queue.isEmpty()
+const isEmpty = queue.isEmpty()
 ```
 
 ## Performance
@@ -71,7 +71,7 @@ Shift 1,000,000 items by `rapid-queue-2`: 0.00865 Seconds
 Shift 1,000,000 items by regular array: 88.97404 Seconds
 
 The code used for benchmark:
-```
+```js
 const RapidQueue = require('rapid-queue-2')
 const queue = RapidQueue.createQueue()
 
