@@ -1,6 +1,6 @@
 {
   "name": "rapid-queue-2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Blazing fast Queue with table doubling and circular buffer.",
   "main": "./src/queue.js",
   "scripts": {},
