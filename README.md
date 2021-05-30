@@ -1,4 +1,4 @@
-rapid-queue2
+rapid-queue-2
 =============
 JavaScript array.shift() is slow. This is an implementation using circular buffer and two stack. Circular queue use circular buffer and Double Stack Queue use two stack to implement the queue.
 
