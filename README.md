@@ -1,80 +1,120 @@
-rapid-queue
+rapid-queue2
 =============
-Javascript array.shift() is slow. This is an implementation using circular buffer and two stack. Circular queue use circular buffer and Double Stack Queue use two stack to implement the queue. This implementation of shift is up to 100x faster than javascript array.shift().
+JavaScript array.shift() is slow. This is an implementation using circular buffer and two stack. Circular queue use circular buffer and Double Stack Queue use two stack to implement the queue.
 
-##Installation
+This implementation of shift is up to 10,000 times faster than JavaScript's array.shift().
+
+## Installation
 
 ```shell
-	npm install rapid-queue
+	npm install rapid-queue2
 ```
 
-##Usage
+## Usage
 
 Before using it, require the module
 
 ```js
-	var RapidQueue = require('rapid-queue');
+	const RapidQueue = require('rapid-queue2')
 ```
 
-###Creating queue
+### Creating queue
 
 ```js
-  var queue = RapidQueue.createQueue();
+  const queue = RapidQueue.createQueue()
 ```
 
-##Queue operation
+## Queue operation
 
 
-###Inserting element to the end of queue
+### Inserting element to the end of queue
 
 ```js
-  queue.push(5);`
+  queue.push(5)`
 ```
 
-push will insert 5 to the back of the queue, it will automatically grow the array if the capacity is not enough.
+Push will insert 5 to the back of the queue, it will automatically grow the array if the capacity is not enough.
 
-###Get front element
+### Get front element
 
 ```js
-  var front = queue.front();
+  const front = queue.front()
 ```
 
 It will return the front element without removing it from the queue. It will return null if queue is empty.
 
-###Remove front element
+### Remove front element
 
 ```js
-  var front = queue.shift();
+  const front = queue.shift()
 ```
 
 It will return and remove front element from the queue. It will return null if queue is empty.
 
-###Get queue length
+### Get queue length
 
 ```js
-  var length = queue.length()
+  const length = queue.length()
 ```
 
 It will return the number of element inside queue;
 
-###Check if queue is empty
+### Check if queue is empty
 
 ```js
-  var isEmpty = queue.isEmpty()
+  const isEmpty = queue.isEmpty()
 ```
 
-##Performance
+## Performance
 
-This is comparison using RapidQueue shift() and Array shift()
+Shift 1,000,000 items by `rapid-queue-2`: 0.00865 Seconds
+Shift 1,000,000 items by regular array: 88.97404 Seconds
 
-http://jsperf.com/rapidqueue-shift-vs-array-shift
+The code used for benchmark:
+```
+const RapidQueue = require('rapid-queue2')
+const queue = RapidQueue.createQueue()
 
-As you can see, it is significantly faster
+// function to measure code execution time
+function parseHrtimeToSeconds(hrtime) {
+  var seconds = (hrtime[0] + hrtime[1] / 1e9).toFixed(5)
+  return seconds
+}
 
-This is comparison using RapidQueue push() and Array push()
+for (let i = 0; i < 1000000; i++) {
+  queue.push(i)
+}
 
-http://jsperf.com/rapidqueue-push-vs-array-push
+// start measuring time1
+startTime1 = process.hrtime()
 
-RapidQueue.push() is faster on chrome but can be 2-3 times slower in another browser. This slowdown is not as significant as Array.shift() vs RapidQueue.shift(). This slowdown is due to having additional internal state for circular buffer implementation.
+for (let i = 0; i < 1000000; i++) {
+  queue.shift()
+}
 
+// stop time1
+const elapsedSeconds1 = parseHrtimeToSeconds(process.hrtime(startTime1))
+console.log('rapid-queue-2: ' + elapsedSeconds1 + 'seconds')
 
+// ------ regular array implementation
+const arr = []
+
+for (let i = 0; i < 1000000; i++) {
+  arr.push(i)
+}
+
+// start measuring time2
+startTime2 = process.hrtime()
+for (let i = 0; i < 1000000; i++) {
+  arr.shift()
+}
+
+// stop time2
+const elapsedSeconds2 = parseHrtimeToSeconds(process.hrtime(startTime2))
+console.log('Array: ' + elapsedSeconds2 + 'seconds')
+```
+
+#### License
+MIT
+
+The original code is on `kevyuu/rapid-queue` and is not maintained.
