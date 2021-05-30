@@ -7,7 +7,7 @@ This implementation of shift is up to 10,000 times faster than JavaScript's arra
 ## Installation
 
 ```shell
-	npm install rapid-queue2
+	npm install rapid-queue-2
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ This implementation of shift is up to 10,000 times faster than JavaScript's arra
 Before using it, require the module
 
 ```js
-	const RapidQueue = require('rapid-queue2')
+	const RapidQueue = require('rapid-queue-2')
 ```
 
 ### Creating queue
@@ -72,7 +72,7 @@ Shift 1,000,000 items by regular array: 88.97404 Seconds
 
 The code used for benchmark:
 ```
-const RapidQueue = require('rapid-queue2')
+const RapidQueue = require('rapid-queue-2')
 const queue = RapidQueue.createQueue()
 
 // function to measure code execution time
